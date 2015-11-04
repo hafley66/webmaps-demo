@@ -1,0 +1,15 @@
+{
+  "jspm": {
+    "dependencies": {
+      "google-maps-api": "npm:google-maps-api@^1.1.0",
+      "leaflet": "github:Leaflet/Leaflet@^0.7.7",
+      "leaflet-extras/leaflet-providers": "github:leaflet-extras/leaflet-providers@^1.1.6",
+      "text": "github:systemjs/plugin-text@^0.0.3"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  }
+}
