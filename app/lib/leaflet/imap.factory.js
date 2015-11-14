@@ -1,8 +1,7 @@
-import map from "leaflet-map";
 import L from 'leaflet';
 import _ from 'lodash';
 
-function LeafletIMapFactory() {
+function LeafletIMapFactory(map) {
 	var visibleLayer = new L.FeatureGroup();
 	map.addLayer(visibleLayer);
 	map._s = {};
@@ -109,7 +108,7 @@ function LeafletIMapFactory() {
 	}
 
 
-	return var IMap = {
+	var IMap = {
 		init: init,
 		addMarker: addMarker,
 		addAllMarkers: addAllMarkers,
@@ -121,5 +120,10 @@ function LeafletIMapFactory() {
 		setState: setState,
 		openMarker: openMarker
 	};
+
+	return IMap;
 }
-export LeafletIMapFactory;
+
+var inline = ['leaflet.map', LeafletIMapFactory];
+
+export default inline;

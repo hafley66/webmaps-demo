@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-function MapService(map, states, filters, popup) {
+function MapService(map, states, filters) {
 	this.filters  = [];
 	this.states = [];
 	this.map = map;
@@ -19,5 +19,5 @@ function MapService(map, states, filters, popup) {
 		//done;
 	}
 }
-
-export default var mapServiceInline = ['IMap', 'eim.s.markers', 'eim.s.states', 'eim.s.filters', 'eim.s.popup', MapFactory];
+var mapServiceInline = ['IMap', 'eim.s.states', 'eim.s.filters', MapService];
+export default mapServiceInline;

@@ -14,5 +14,5 @@ function StateDirective(states) {
 	};
 }
 var stateDirectiveInline = ['eim.s.states', StateDirective];
-export stateDirectiveInline;
+export default stateDirectiveInline;
 

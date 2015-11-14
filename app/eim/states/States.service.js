@@ -5,4 +5,4 @@ function StateService() {
 	this.add = [].push.bind(this.states);
 }
 
-export StateService;
+export default StateService;

@@ -19,4 +19,4 @@ function filterService() {
 	}
 }
 
-export filterService;
+export default filterService;
