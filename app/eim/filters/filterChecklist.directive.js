@@ -1,12 +1,6 @@
 import _ from "lodash";
 
-// function FilterGroupDirective() {
-// 	return {
-// 		restrict: "E"
-// 	}
-// }
-
-function FilterChecklistDirective(map, filters, configurePredicate) {
+function FilterChecklistDirective(map, configurePredicate) {
 	return {
 		restrict: "E",
 		controller: FilterChecklistController,
@@ -23,7 +17,7 @@ function FilterChecklistDirective(map, filters, configurePredicate) {
 		require: 'filterChecklist',
 		link: function(scope, element, attr, ctrl) {
 			ctrl.predicate = configurePredicate(ctrl.predicate);
-			filters.add(mCtr.filter);
+			map.addFilter(mCtr.filter);
 			element.on('click', function() {
 				map.onFilterUpdate();
 			});
@@ -40,24 +34,24 @@ function FilterChecklistController() {
 		});
 	});
 }
-FilterChecklistController.prototype.filter = filter;
-FilterChecklistController.prototype._getActiveItems = _getActiveItems;
-function filter(markers) {
-	var activeRange = this._getActiveItems();
-	return _.filter(markers, function(m) {
-		return !!this.predicate(_.at(m.data, this.selection), activeRange);
-	});
-}
-function _getActiveItems() {
-	var onlyTheActives = _.filter(this.items, {active:true});
-	var theActiveValues = _.pluck(onlyTheActives, 'val');
-	return theActiveValues;
-}
+FilterChecklistController.prototype = {
+	filter: function(markers) {
+		var activeRange = this._getActiveItems();
+		return _.filter(markers, function(m) {
+			return !!this.predicate(_.at(m.data, this.selection), activeRange);
+		});
+	},
+	_getActiveItems: function () {
+		var onlyTheActives = _.filter(this.items, {active:true});
+		var theActiveValues = _.pluck(onlyTheActives, 'val');
+		return theActiveValues;
+	}
+};
+
 
 var filterChecklistInline = [
-'eim.s.map',
-'eim.s.filters',
-'eim.f.filterPredicates',
+'eim.mapper',
+'eim.filterPredicates',
 FilterChecklistController
 ];
 

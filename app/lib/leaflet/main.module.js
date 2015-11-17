@@ -4,4 +4,4 @@ import map from 'eim.leaflet.map';
 
 angular.module('eim-leaflet', [])
 .factory('leaflet.map', map)
-.factory('IMap', IMap);
+.factory('leaflet.IMap', IMap);

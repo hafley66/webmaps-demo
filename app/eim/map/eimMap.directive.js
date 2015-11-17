@@ -1,14 +1,21 @@
-function eimMapDirective(mapService) {
+import eim from 'eim.events';
+
+function eimMapDirective($rootScope, mapService) {
 	return {
 		scope: {
-			markers: "=?"
+			zoom: "=?",
+			center: "=?"
 		},
-		link: function(s, e, a){
-			mapService.map.addAllMarkers(s.markers);
-		},
-		templateUrl: "eimMap.html"
-		// template: '<div id="map"> </div>'
+		link: {
+			pre: function(s, e, a){
+				
+			},
+			post: function(s, e, a){
+				mapService.ready = true;
+				$rootScope.$emit(eim.mapReady, mapService);
+			}
+		}
 	};
 }
-var eimMapDirectiveInline = ['eim.s.map', eimMapDirective];
+var eimMapDirectiveInline = ['$rootScope', 'eim.mapper', eimMapDirective];
 export default eimMapDirectiveInline;

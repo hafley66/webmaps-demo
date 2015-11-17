@@ -1,13 +1,41 @@
 
 <html>
+  <style>
+    .marker-container {
+      width: 35px;
+      height: auto;
+      border-radius: 10px;
+      background-color: #FF4136;
+    }
+    
+    img {
+      width:100px;
+      height:auto;
+    }
+    
+    @keyframes pulse {
+      0% {
+        background-color: #001F3F;
+      }
+      100% {
+        background-color: #FF4136;
+      }
+    }
+  </style>
   <body>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <style>#map { height: 500px; }</style>
-    <script>System.import('eim');</script>
-    <div ng-app="eim-map">
-      <eim-map></eim-map>
+    <script>System.import('dte.mapper');</script>
+    <div id="map"></div>
+    <div ng-app="dte-example" ng-controller="dte-mapper as ctrl">
+      <eim-map markers="ctrl.markers">
+        <eim-state key="green" val="green">
+          <div class="marker-container"><img src="http://img.thrfun.com/img/079/736/kitten_with_worms_s1.jpg"/></div>
+        </eim-state>
+        <eim-popup>Hello World!</eim-popup>
+      </eim-map>
     </div>
   </body>
 </html>
