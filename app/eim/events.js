@@ -9,6 +9,9 @@ var eim = {
 	},
 	get mapReady() {
 		return this.e('onMapReady');
+	},
+	get markerPopupOpened() {
+		return this.e('onMarkerPopupOpened');
 	}
 };
 

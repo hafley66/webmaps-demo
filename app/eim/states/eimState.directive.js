@@ -11,8 +11,6 @@ function StateDirective(mapManager) {
 					node: tElem // TODO: Place transcluded content/domnode here.
 				}
 			});
-			console.log(attr.iconUrl);
-			console.log(tElem);
 		}
 	};
 }

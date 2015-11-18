@@ -9,8 +9,7 @@ function LeafletIMapFactory($rootScope) {
 		var MAP = getmap(id, options),
 		visibleLayer = new L.FeatureGroup();
 		MAP.addLayer(visibleLayer);
-		console.log("hello world!");
-		console.log(L);
+		
 		return {
 			map: MAP,
 			markers: [],
@@ -24,21 +23,27 @@ function LeafletIMapFactory($rootScope) {
 				m._m.on("click", function onMarkerClick(e) {
 					$rootScope.$emit(eim.markerClicked, e.target.m);
 				});
+				m._m.on('popupopen', function onMarkerPopupOpen(e){
+					$rootScope.$emit(eim.markerPopupOpen, e.target.m);
+				});
 				this.markers.push(m);
-				m._m.setIcon(this.icons['green']);
-				// console.log("boop");
+				if(!this.icons['default'])
+					this.addState({key: "default", val: "default", icon: { url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png", node: {}}});
+				m._m.setIcon(this.icons['default']);
 			},
 			addState: function(s) {
 				var icon = null;
+				var iconHTML = "";
+				var iconHTML_forURL = '<div class="eim icon-wrapper"><img src=${ url } /></div>';
+				var iconHTML_forNode= '<div class="eim icon-wrapper"> ${ innerHTML } </div>';
+
 				if(s.icon.url){
-					// TODO: Figure out the proper way to attach a custom div.
-					icon = L.icon({iconUrl: s.icon.url});
+					iconHTML = _.template(iconHTML_forURL)({url : s.icon.url});
 				} else {
-					console.log('grrr');
-					icon = L.divIcon({html: s.icon.node.html()});
+					iconHTML = _.template(iconHTML_forNode)({innerHTML: s.icon.node.html()});
 				}
-				console.log("hello worldssss");
-				console.log(s);
+				icon = L.divIcon({html: iconHTML});
+
 				this.icons[s.key] = icon;
 				this.states[s.key] = s;
 			},
@@ -52,9 +57,7 @@ function LeafletIMapFactory($rootScope) {
 
 				p.openOn = function(m){
 					var pp = this._p, mm = m._m;
-					if(m === this.currentMarker){
-						// mm.togglePopup();
-					} else {
+					if(m !== this.currentMarker){
 						if(this.currentMarker){
 							this.currentMarker._m.closePopup();
 							this.currentMarker._m.unbindPopup();

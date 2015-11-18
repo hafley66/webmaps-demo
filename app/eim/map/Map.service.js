@@ -4,7 +4,6 @@ import eim from 'eim.events';
 function MapManager($rootScope, imap) {
 	
 	this.map = imap('map', {});
-	console.log(this.map);
 	this.addFilter = [].push.bind(this.filters);
 	// Make sure a copy of markers is passed.
 	this.filterMarkers = function(markers) {

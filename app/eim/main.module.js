@@ -1,3 +1,5 @@
+import "./eimStyles.css!";
+
 import stateDirective from 'eim.eimState';
 import filterChecklistDirective from 'eim.eimFilterChecklist';
 import eimMapDirective from 'eim.eimMap';
@@ -9,8 +11,8 @@ import filterPredicatesFactory from 'eim.filterPredicates';
 import LeafletIMap from 'eim.imap.leaflet';
 import angular from 'angular';
 
-var app = angular.module("eim-map", []);
 
+var app = angular.module("eim-map", []);
 app.directive('eimMap', eimMapDirective);
 app.directive('eimState', stateDirective);
 app.directive('eimFilterChecklist', filterChecklistDirective);

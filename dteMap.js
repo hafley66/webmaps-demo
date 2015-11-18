@@ -11,7 +11,8 @@ app.controller("dte-mapper", ['$rootScope', '$scope', '$http', 'eim.mapper', fun
 			
 			function addTheMarkers(x){
 				console.log(x);
-				_.forEach(x.data, function(data) {
+				var d = x.data.slice(-5);
+				_.forEach(d, function(data) {
 					if(data.fields.latitude && data.fields.longitude)
 						mapper.map.addMarker({
 							latlng: {

@@ -3,7 +3,6 @@ import eim from 'eim.events';
 
 function PopupDirective($rootScope, mapManager) {
 	return {
-		// require: "eimMap",
 		scope: true,
 		link: function(s, e, a) {
 			mapManager.map.addPopup({
@@ -16,7 +15,8 @@ function PopupDirective($rootScope, mapManager) {
 
 			$rootScope.$on(eim.markerClicked, function(e, m){
 				s.marker = m;
-				s.fields = m.fields;			
+				s.fields = m.fields;	
+				s.$digest();
 			});
 		}
 	};

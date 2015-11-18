@@ -1,40 +1,41 @@
 
 <html>
-  <style>
-    .marker-container {
-      width: 35px;
-      height: auto;
-      border-radius: 10px;
-      background-color: #FF4136;
-    }
-    
-    img {
-      width:100px;
-      height:auto;
-    }
-    
-    @keyframes pulse {
-      0% {
-        background-color: #001F3F;
-      }
-      100% {
-        background-color: #FF4136;
-      }
-    }
-  </style>
   <body>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
-    <script src="jspm_packages/system.js"></script>
-    <script src="config.js"></script>
+    <link rel="stylesheet" href="styles.css"/>
     <style>#map { height: 500px; }</style>
-    <script>System.import('dte.mapper');</script>
+    <script src="sfx.bundle.js"></script>
+    <script>
+      var app = angular.module('dte-example', ['eim-map']);
+      
+      app.controller("dte-mapper", ['$rootScope', '$scope', '$http', 'eim.mapper', function($rootScope, $scope, $http, mapper){
+      $rootScope.$on("eim:onMapReady", function(e, m){
+        
+        $http.get('mapdata.json').then(
+          
+          function addTheMarkers(x){
+            console.log(x);
+            var d = x.data.slice(-5);
+            d.forEach(function(data) {
+              if(data.fields.latitude && data.fields.longitude)
+                mapper.map.addMarker({
+                  latlng: {
+                    lat: data.fields.latitude,
+                    lng: data.fields.longitude
+                  },
+                  fields: data.fields
+                }); 
+            });
+          });
+        });
+      }]);  
+    </script>
     <div id="map"></div>
     <div ng-app="dte-example" ng-controller="dte-mapper as ctrl">
       <eim-map markers="ctrl.markers">
-        <eim-state key="green" val="green">
-          <div class="marker-container"><img src="http://img.thrfun.com/img/079/736/kitten_with_worms_s1.jpg"/></div>
-        </eim-state>
-        <eim-popup>Hello World!</eim-popup>
+        <eim-state key="green" val="green" icon-url="https://maps.google.com/mapfiles/ms/icons/green-dot.png"><img src="https://maps.google.com/mapfiles/ms/icons/green-dot.png"/></eim-state>
+        <eim-popup>Hello World! {{marker.latlng.lat}}</eim-popup>
+        
       </eim-map>
     </div>
   </body>
