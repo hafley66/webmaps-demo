@@ -47,7 +47,7 @@ function LeafletIMapFactory($rootScope) {
 				this.icons[s.key] = icon;
 				this.states[s.key] = s;
 			},
-			addPopup: function(p) {
+			addScopedPopup: function(p, $scope) {
 				this.popup = p; 
 				p._p = L.popup().setContent(p.content);
 				p._p.p = p; 
@@ -58,11 +58,14 @@ function LeafletIMapFactory($rootScope) {
 				p.openOn = function(m){
 					var pp = this._p, mm = m._m;
 					if(m !== this.currentMarker){
+						$scope.setMarker(m);
 						if(this.currentMarker){
 							this.currentMarker._m.closePopup();
 							this.currentMarker._m.unbindPopup();
 						}
-						mm.bindPopup(pp).openPopup();
+						mm.bindPopup(pp);
+						pp.update();
+						mm.openPopup();
 						this.currentMarker = m;
 					}
 				};

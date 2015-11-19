@@ -10,14 +10,12 @@ System.config({
   },
   paths: {
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
+    "npm:*": "jspm_packages/npm/*",
+    "bower:*": "jspm_packages/bower/*"
   },
-  // separateCSS: true,
 
   map: {
-    "eimStyles": "app/eim/eimStyles.css",
     "angular": "app/angular.adapter",
-    // "angular": "github:angular/bower-angular@1.4.7",
     "app": "app/",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
@@ -37,10 +35,12 @@ System.config({
     "eim.leaflet": "app/lib/leaflet/main.module",
     "eim.leaflet.map": "app/lib/leaflet/map.factory",
     "eim.mapper": "app/eim/map/Map.service",
+    "eimStyles": "app/eim/eimStyles.css",
     "gmaps": "https://maps.googleapis.com/maps/api/js?key=AIzaSyAk057tSOIH_BWOLUn2WkwsxJwPce3D3NE",
     "google-maps-api": "npm:google-maps-api@1.1.0",
     "leaflet": "github:Leaflet/Leaflet@0.7.7",
     "leaflet-providers": "github:leaflet-extras/leaflet-providers@1.1.6",
+    "leaflet.markercluster": "bower:leaflet.markercluster@0.4.0",
     "lodash": "npm:lodash@3.10.1",
     "templates": "app/templates",
     "text": "github:systemjs/plugin-text@0.0.3",

@@ -9,7 +9,7 @@ function eimMapDirective($rootScope, mapService) {
 		// template: '<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>',
 		link: {
 			pre: function(s, e, a){
-				e.append('<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>');
+				// e.append('<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>');
 			},
 			post: function(s, e, a){
 				mapService.ready = true;

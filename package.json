@@ -6,6 +6,7 @@
       "google-maps-api": "npm:google-maps-api@^1.1.0",
       "leaflet": "github:Leaflet/Leaflet@^0.7.7",
       "leaflet-extras/leaflet-providers": "github:leaflet-extras/leaflet-providers@^1.1.6",
+      "leaflet.markercluster": "bower:leaflet.markercluster@^0.4.0",
       "lodash": "npm:lodash@^3.10.1",
       "text": "github:systemjs/plugin-text@^0.0.3"
     },
@@ -15,5 +16,8 @@
       "clean-css": "npm:clean-css@^3.4.8",
       "core-js": "npm:core-js@^1.1.4"
     }
+  },
+  "devDependencies": {
+    "jspm-bower-endpoint": "^0.3.2"
   }
 }
