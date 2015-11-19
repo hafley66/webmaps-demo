@@ -40,7 +40,7 @@ System.config({
     "google-maps-api": "npm:google-maps-api@1.1.0",
     "leaflet": "github:Leaflet/Leaflet@0.7.7",
     "leaflet-providers": "github:leaflet-extras/leaflet-providers@1.1.6",
-    "leaflet.markercluster": "bower:leaflet.markercluster@0.4.0",
+    "leaflet.markercluster": "bower:leaflet.markercluster/leaflet.markercluster@0.4.0",
     "lodash": "npm:lodash@3.10.1",
     "templates": "app/templates",
     "text": "github:systemjs/plugin-text@0.0.3",

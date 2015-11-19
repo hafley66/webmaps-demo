@@ -1,13 +1,15 @@
 import L from 'leaflet';
 import _ from 'lodash';
 import getmap from 'eim.leaflet.map';
+import 'leaflet.markercluster';
 import eim from 'eim.events';
 
 
 function LeafletIMapFactory($rootScope) {
 	return function LeafletIMap(id, options) {
 		var MAP = getmap(id, options),
-		visibleLayer = new L.FeatureGroup();
+
+		visibleLayer = L.markerClusterGroup();
 		MAP.addLayer(visibleLayer);
 		
 		return {
