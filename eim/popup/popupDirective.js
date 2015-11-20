@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import eim from 'eim.events';
+import eim from 'eim/events';
 
 function PopupDirective($rootScope, mapManager) {
 	return {

@@ -1,8 +1,16 @@
 import L from 'leaflet';
 import _ from 'lodash';
-import getmap from 'eim.leaflet.map';
-import eim from 'eim.events';
+// import getmap from 'eim.leaflet.map';
+import eim from 'eim/events';
+import 'leaflet-providers';
 
+function getmap(id, initOptions) {
+	var map = L.map(id).setView([38.8833, -98], 4);
+	var mapboxid = 'hafley66.cigl4owb2014aujlz1r7u5x4j';
+	var accessToken = 'pk.eyJ1IjoiaGFmbGV5NjYiLCJhIjoiY2lnbDRveGpxMDA5c3RxbTM1bDJjeDB1bSJ9.HrDOkxkziNZymFnFsbMBGA';
+	L.tileLayer.provider('MapBox', {id: mapboxid, accessToken: accessToken}).addTo(map);
+	return map;
+}
 
 function LeafletIMapFactory($rootScope) {
 	return function LeafletIMap(id, options) {
@@ -31,6 +39,19 @@ function LeafletIMapFactory($rootScope) {
 					this.addState({key: "default", val: "default", icon: { url: "https://maps.google.com/mapfiles/ms/icons/green-dot.png", node: {}}});
 				m._m.setIcon(this.icons['default']);
 			},
+			addControl: function(controlNode_jqLite, position) {
+				var leafletControlExtension = {
+					options: {
+						position: position
+					},
+					onAdd: function(map) {
+						return controlNode_jqLite[0];
+					}
+				},
+				Control = L.Control.extend(leafletControlExtension);
+
+				this.map.addControl(new Control());
+			},
 			addState: function(s) {
 				var icon = null;
 				var iconHTML = "";
@@ -53,7 +74,6 @@ function LeafletIMapFactory($rootScope) {
 				p._p.p = p; 
 
 				p.currentMarker = null;
-				p.visible = false;
 
 				p.openOn = function(m){
 					var pp = this._p, mm = m._m;
@@ -72,7 +92,6 @@ function LeafletIMapFactory($rootScope) {
 				p.close = function() {
 					if(this.currentMarker){
 						this.currentMarker._m.closePopup();
-						this.visible = false;
 					}
 				};
 				return p;

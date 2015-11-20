@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import eim from 'eim.events';
+import eim from 'eim/events';
 
 function MapManager($rootScope, imap) {
 	
@@ -28,5 +28,5 @@ function MapManager($rootScope, imap) {
 	};
 	$rootScope.$on(eim.markerClicked, (event, marker) => this.map.popup.openOn(marker) );
 }
-var mapServiceInline = ['$rootScope', 'eim.imap.leaflet', MapManager];
+var mapServiceInline = ['$rootScope', 'eim.map.leaflet', MapManager];
 export default mapServiceInline;

@@ -3,49 +3,27 @@ html
   body
     link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css')
     link(rel="stylesheet" href="styles.css")
-    //- script(src='jspm_packages/system.js')
-    //- script(src='config.js')
+    //- script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js")
+    script(src='jspm_packages/system.js')
+    script(src='config.js')
     style.
       #map { height: 500px; }
-    script(src="sfx.bundle.js")
     script.
-      var app = angular.module('dte-example', ['eim-map']);
-
-      app.controller("dte-mapper", ['$rootScope', '$scope', '$http', 'eim.mapper', function($rootScope, $scope, $http, mapper){
-      $rootScope.$on("eim:onMapReady", function(e, m){
-        
-        $http.get('mapdata.json').then(
-          
-          function addTheMarkers(x){
-            console.log(x);
-            var d = x.data.slice(-5);
-            d.forEach(function(data) {
-              if(data.fields.latitude && data.fields.longitude)
-                mapper.map.addMarker({
-                  latlng: {
-                    lat: data.fields.latitude,
-                    lng: data.fields.longitude
-                  },
-                  fields: data.fields
-                }); 
-            });
-          });
-        });
-      }]);  
+      System.import('dte.mapper')
     #map
-    div(ng-app='dte-example' ng-controller="dte-mapper as ctrl")
-      eim-map(markers="ctrl.markers")
+    div.here(ng-app="dte-example" ng-controller="dte-mapper")
+      eim-map()
         eim-state(key="green" val="green" icon-url="https://maps.google.com/mapfiles/ms/icons/green-dot.png")
           img(src="https://maps.google.com/mapfiles/ms/icons/green-dot.png")
         eim-popup
           |Hello World! {{marker.latlng.lat}}
-        //- eim-control(position="")
+        eim-control(position="")
 
 
-        //-     .info-window
-        //-       .map-iw-title
-        //-         .title
-        //-           |${title}
-        //-         .button-text
-        //-           |Go To Profile Page
-        //-       table
+      //-     .info-window
+      //-       .map-iw-title
+      //-         .title
+      //-           |${title}
+      //-         .button-text
+      //-           |Go To Profile Page
+      //-       table

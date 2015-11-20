@@ -1,4 +1,4 @@
-import eim from 'eim.events';
+import eim from 'eim/events';
 
 function eimMapDirective($rootScope, mapService) {
 	return {

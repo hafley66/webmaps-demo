@@ -14,8 +14,17 @@ System.config({
     "bower:*": "jspm_packages/bower/*"
   },
 
+  packages: {
+    "eim": {
+      "main": "main.module.js",
+      "basePath": "",
+      "map": {}
+    }
+  },
+
   map: {
-    "angular": "app/angular.adapter",
+    // "angular": "angular.adapter",
+    "angular": "github:angular/bower-angular@1.4.8",
     "app": "app/",
     "babel": "npm:babel-core@5.8.33",
     "babel-runtime": "npm:babel-runtime@5.8.29",
@@ -23,19 +32,19 @@ System.config({
     "core-js": "npm:core-js@1.2.5",
     "css": "github:systemjs/plugin-css@0.1.19",
     "dte.mapper": "dteMap",
-    "eim": "app/eim/main.module",
-    "eim.Filters.service": "app/eim/filters/Filters.service",
-    "eim.eimFilterChecklist": "app/eim/filters/filterChecklist.directive",
-    "eim.eimMap": "app/eim/map/eimMap.directive",
-    "eim.eimPopup": "app/eim/popup/eimPopup",
-    "eim.eimState": "app/eim/states/eimState.directive",
-    "eim.events": "app/eim/events",
-    "eim.filterPredicates": "app/eim/filters/filterPredicates.factory",
-    "eim.imap.leaflet": "app/lib/leaflet/imap.factory",
-    "eim.leaflet": "app/lib/leaflet/main.module",
-    "eim.leaflet.map": "app/lib/leaflet/map.factory",
-    "eim.mapper": "app/eim/map/Map.service",
-    "eimStyles": "app/eim/eimStyles.css",
+    // "eim": "app/eim/main.module",
+    // "eim.Filters.service": "app/eim/filters/Filters.service",
+    // "eim.eimFilterChecklist": "app/eim/filters/filterChecklist.directive",
+    // "eim.eimMap": "app/eim/map/eimMap.directive",
+    // "eim.eimPopup": "app/eim/popup/eimPopup",
+    // "eim.eimState": "app/eim/states/eimState.directive",
+    // "eim.events": "app/eim/events",
+    // "eim.filterPredicates": "app/eim/filters/filterPredicates.factory",
+    // "eim.imap.leaflet": "app/lib/leaflet/imap.factory",
+    // "eim.leaflet": "app/lib/leaflet/main.module",
+    // "eim.leaflet.map": "app/lib/leaflet/map.factory",
+    // "eim.mapper": "app/eim/map/Map.service",
+    // "eimStyles": "app/eim/eimStyles.css",
     "gmaps": "https://maps.googleapis.com/maps/api/js?key=AIzaSyAk057tSOIH_BWOLUn2WkwsxJwPce3D3NE",
     "google-maps-api": "npm:google-maps-api@1.1.0",
     "leaflet": "github:Leaflet/Leaflet@0.7.7",

@@ -1,7 +1,10 @@
 import _ from 'lodash';
 import "eim";
 import angular from 'angular';
-import eim from 'eim.events';
+import eim from 'eim/events';
+
+
+
 var app = angular.module('dte-example', ['eim-map']);
 
 app.controller("dte-mapper", ['$rootScope', '$scope', '$http', 'eim.mapper', function($rootScope, $scope, $http, mapper){
