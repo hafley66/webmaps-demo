@@ -1,9 +1,7 @@
 import _ from 'lodash';
 import eim from 'eim/events';
 
-function MapManager($rootScope, imap) {
-	
-	this.map = imap('map', {});
+function MapManager($rootScope, $q) {
 	this.addFilter = [].push.bind(this.filters);
 	// Make sure a copy of markers is passed.
 	this.filterMarkers = function(markers) {
@@ -26,7 +24,15 @@ function MapManager($rootScope, imap) {
 		this.map.removeAllMarkers(diff);
 		//done;
 	};
-	$rootScope.$on(eim.markerClicked, (event, marker) => this.map.popup.openOn(marker) );
+
+	this.setMarkerStates = function(fMarkers, fStates) {
+		_.forEach(fMarkers, function(m) {
+			_.forEach()
+		});
+	};
+	var that = this;
+	$rootScope.$on(eim.markerClicked, function(event, marker){ that.map.popup.openOn(marker); });
+
 }
-var mapServiceInline = ['$rootScope', 'eim.map.leaflet', MapManager];
+var mapServiceInline = ['$rootScope', '$q', MapManager];
 export default mapServiceInline;

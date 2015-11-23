@@ -5,6 +5,7 @@ function PopupDirective($rootScope, mapManager) {
 	return {
 		scope: true,
 		link: function(s, e, a) {
+
 			var popup = {
 				content: e[0],
 				currentMarker: null,
@@ -13,13 +14,14 @@ function PopupDirective($rootScope, mapManager) {
 				close: null
 			};
 			mapManager.map.addScopedPopup(popup, s);
-
+			
 			s.setMarker = setMarker;
 			function setMarker(m){
 				s.marker = m;
 				s.fields = m.fields;
 				s.$digest();
 			}
+			return;
 		}
 	};
 }

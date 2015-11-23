@@ -23,7 +23,7 @@ System.config({
   },
 
   map: {
-    // "angular": "angular.adapter",
+    // "angular":"angular.adapter",
     "angular": "github:angular/bower-angular@1.4.8",
     "app": "app/",
     "babel": "npm:babel-core@5.8.33",
@@ -32,26 +32,14 @@ System.config({
     "core-js": "npm:core-js@1.2.5",
     "css": "github:systemjs/plugin-css@0.1.19",
     "dte.mapper": "dteMap",
-    // "eim": "app/eim/main.module",
-    // "eim.Filters.service": "app/eim/filters/Filters.service",
-    // "eim.eimFilterChecklist": "app/eim/filters/filterChecklist.directive",
-    // "eim.eimMap": "app/eim/map/eimMap.directive",
-    // "eim.eimPopup": "app/eim/popup/eimPopup",
-    // "eim.eimState": "app/eim/states/eimState.directive",
-    // "eim.events": "app/eim/events",
-    // "eim.filterPredicates": "app/eim/filters/filterPredicates.factory",
-    // "eim.imap.leaflet": "app/lib/leaflet/imap.factory",
-    // "eim.leaflet": "app/lib/leaflet/main.module",
-    // "eim.leaflet.map": "app/lib/leaflet/map.factory",
-    // "eim.mapper": "app/eim/map/Map.service",
-    // "eimStyles": "app/eim/eimStyles.css",
     "gmaps": "https://maps.googleapis.com/maps/api/js?key=AIzaSyAk057tSOIH_BWOLUn2WkwsxJwPce3D3NE",
     "google-maps-api": "npm:google-maps-api@1.1.0",
+    "json": "github:systemjs/plugin-json@0.1.0",
     "leaflet": "github:Leaflet/Leaflet@0.7.7",
     "leaflet-providers": "github:leaflet-extras/leaflet-providers@1.1.6",
     "leaflet.markercluster": "bower:leaflet.markercluster@0.4.0",
     "lodash": "npm:lodash@3.10.1",
-    "templates": "app/templates",
+    "moment": "npm:moment@2.10.6",
     "text": "github:systemjs/plugin-text@0.0.3",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -156,6 +144,9 @@ System.config({
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
     "npm:lodash@3.10.1": {
+      "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:moment@2.10.6": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:os-browserify@0.1.2": {

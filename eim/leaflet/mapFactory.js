@@ -5,7 +5,12 @@ import eim from 'eim/events';
 import 'leaflet-providers';
 
 function getmap(id, initOptions) {
-	var map = L.map(id).setView([38.8833, -98], 4);
+	if(!initOptions)
+		initOptions = {};
+	initOptions.attributionControl = false;
+	// var map = L.map(id, initOptions).setView([38.8833, -98], 4);
+	console.log(initOptions);
+	var map = L.map(id, initOptions);
 	var mapboxid = 'hafley66.cigl4owb2014aujlz1r7u5x4j';
 	var accessToken = 'pk.eyJ1IjoiaGFmbGV5NjYiLCJhIjoiY2lnbDRveGpxMDA5c3RxbTM1bDJjeDB1bSJ9.HrDOkxkziNZymFnFsbMBGA';
 	L.tileLayer.provider('MapBox', {id: mapboxid, accessToken: accessToken}).addTo(map);
@@ -137,11 +142,10 @@ function LeafletIMapFactory($rootScope) {
 				m._m.setIcon(this.icons[s.key]);
 			},
 			openMarker: function(m) {
-				debugger
 				this.popup.openOn(m);
 			},
-			setIcon: function(m, state){
-
+			setIcon: function(m, key){
+				m._m.setIcon(this.icons[key]);
 			},
 			moveCenter: function() {},
 			setZoom: function() {}
