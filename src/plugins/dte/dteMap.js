@@ -1,8 +1,6 @@
 import './dte.styles.css!';
-import './styles.css!';
-
 import datah from './mapdata.json!';
-import template from 'dte.popup.template.html!text';
+import template from './templates/dte.popup.template.html!text';
 
 import _ from 'lodash';
 import "eim";
@@ -23,53 +21,45 @@ app.factory("DTE.states", [function(){
 	};
 }]);
 app.factory('DTE.externalData', ['$http', function($http){
+	console.log(datah);
 	// return $http.get('mapdata.json');
 	return datah;
 }]);
-app.controller("DTE.ExternalDataController", ['$rootScope', '$scope', '$http', 'eim.mapper', 'DTE.externalData', function($rootScope, $scope, $http, mapper, data){
-	$rootScope.$on(eim.mapReady, function(e, m){
-		if(data.then)
-			data.then(function addTheMarkers(x){
+app.controller("DTE.ExternalDataController", ['$rootScope', '$scope', '$http', 'eim.mapper', 'DTE.externalData', function($rootScope, $scope, $http, mapper, datas){
+	console.log("event emmitted");
+	mapper.getMap.then(function(map){
+		if(datas.then)
+			datas.then(function addTheMarkers(x){
 				// console.log(x);
-				// var d = x.data.slice(-5);
+				var d = x.data.slice(-5);
 				addMarkers(d);
 			});
 		else {
-			addMarkers(data);
-		}
-
-		function addMarkers(d){
-			_.forEach(d, function(data) {
-				if(data.fields.latitude && data.fields.longitude){
-					data.fields.pk = data.pk;
-					var marker = {
-						latlng: {
-							lat: data.fields.latitude,
-							lng: data.fields.longitude
-						},
-						fields: data.fields
-					};
-					mapper.map.addMarker(marker);	
-					var state = getStateOfMarker(marker);
-					if(state)
-						mapper.map.setIcon(marker, state);
+			_.forEach(datas, function(data) {
+				var marker = fromDataToMarker(data);
+				if(marker){
+					map.addMarker(marker);	
 				}
 			});
 		}
-
-		function getStateOfMarker(m) {
-			
-			var validKeys = _.keys(_.pick(reasons, function(value, key) {
-				return m.fields[dateKey(key)];
-			}));
-			var intermediate = _.map(_.uniq(_.at(m.fields, validKeys)), [].indexOf.bind(stateList));
-			var i2 = _.max(intermediate);
-			if(i2 >= 0)
-				return stateList[i2];
-			else
-				return;
-		}
 	});
+
+
+
+	function fromDataToMarker(data){
+		if(data.fields.latitude && data.fields.longitude){
+			data.fields.pk = data.pk;
+			var marker = {
+				latlng: {
+					lat: data.fields.latitude,
+					lng: data.fields.longitude
+				},
+				fields: data.fields
+			};
+			return marker;
+		}
+		return null;
+	}
 }]);
 app.directive('dteTableControl', function() {
 	return {

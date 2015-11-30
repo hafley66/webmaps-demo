@@ -1,0 +1,10 @@
+
+<div class="info-window"><a ng-href="/plugins/dte/reports/substation_profile_2.0/{{fields.pk}}" class="map-iw-title">
+    <div class="title">{/ fields.display_name /}</div></a>
+  <table dte-table-control="dte-table-control">
+    <tr ng-class="[$index, key, getHealth(key)]" ng-repeat="key in getValidReasons()">
+      <td class="name">{/ reasons[key] /}</td>
+      <td class="date">{/ getLastDateOfReason(key) /}</td>
+    </tr>
+  </table>
+</div>

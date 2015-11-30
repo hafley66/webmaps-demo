@@ -11,7 +11,8 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "bower:*": "jspm_packages/bower/*"
+    "bower:*": "jspm_packages/bower/*",
+    "eim":"src/eim/",
   },
 
   packages: {
@@ -24,6 +25,7 @@ System.config({
 
   map: {
     // "angular":"angular.adapter",
+    "eim": "src/eim",
     "angular": "github:angular/bower-angular@1.4.8",
     "app": "app/",
     "babel": "npm:babel-core@5.8.33",
@@ -31,7 +33,7 @@ System.config({
     "clean-css": "npm:clean-css@3.4.8",
     "core-js": "npm:core-js@1.2.5",
     "css": "github:systemjs/plugin-css@0.1.19",
-    "dte.mapper": "dteMap",
+    "dte.mapper": "src/plugins/dte/dteMap",
     "gmaps": "https://maps.googleapis.com/maps/api/js?key=AIzaSyAk057tSOIH_BWOLUn2WkwsxJwPce3D3NE",
     "google-maps-api": "npm:google-maps-api@1.1.0",
     "json": "github:systemjs/plugin-json@0.1.0",

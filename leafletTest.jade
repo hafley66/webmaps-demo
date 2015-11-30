@@ -3,26 +3,28 @@ html
   body
     link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css')
 
-    //- script(src='jspm_packages/system.js')
-    //- script(src='config.js')
-    //- script.
-    //-   System.import('dte.mapper')
+    script(src='jspm_packages/system.js')
+    script(src='config.js')
+    script.
+      System.import('dte.mapper')
     style.
       #map { height: 500px; padding-top:100px;}
     #map
     div.here#dte-example
       eim-map(zoom='10' center="{lat: 42.280826, lng: -83.743038}")
-        eim-states
-          eim-state(key="green" val="green" icon-url="http://maps.gstatic.com/mapfiles/markers2/icon_green.png")
-          eim-state(key="open_tasks" val="Open Tasks" icon-url="https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png")
-          eim-state(key="needs_attention" val="Needs Attention" icon-url="http://maps.gstatic.com/mapfiles/markers2/marker.png")
-
+        eim-icons
+          eim-icon(key="green" url="http://maps.gstatic.com/mapfiles/markers2/icon_green.png")
+          eim-icon(key="yellow" url="https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png")
+          eim-icon(key="red" url="http://maps.gstatic.com/mapfiles/markers2/marker.png")
+        eim-state-group(name="healths" keys="winterization_health, summarization_health, annual_audit_health, routine_inspection_health")
+          eim-state(value="good" to-string="Good" icon="green")
+          eim-state(value="open_tasks" to-string="Open Tasks" icon="yellow")
+          eim-state(value="needs_attention" to-string="Needs Attention" icon="red")
+        eim-filter(name="areas" values="napoc, llileip, south, west,norht, east" keys="area")
         eim-popup
           dte-popup
+        eim-control
+          button(eim-filter-click)
       .here(ng-controller="DTE.ExternalDataController")
-    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js")
-    script(src="bundle.js")
-
-          //- eim-control(position="bottomright")
-          //-   .container(style="width: 40px; height: 40px;")
-          //-     |Hello World again
+    //- script(src="bundle.js")
+  

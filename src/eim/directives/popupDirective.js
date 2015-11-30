@@ -7,14 +7,12 @@ function PopupDirective($rootScope, mapManager) {
 		link: function(s, e, a) {
 
 			var popup = {
-				content: e[0],
-				currentMarker: null,
-				visible: false,
-				openOn: null,
-				close: null
+				content: e[0]
 			};
-			mapManager.map.addScopedPopup(popup, s);
-			
+			mapManager._getMap.then(function(map) {
+				map.addScopedPopup(popup, s);
+			});
+						
 			s.setMarker = setMarker;
 			function setMarker(m){
 				s.marker = m;

@@ -1,0 +1,61 @@
+.info-window {
+	color: black;
+}
+
+.good {
+	background-color: rgba(109, 204, 33, 0.7);
+} 
+
+.open_tasks {
+	background-color: rgba(255, 246, 8, 0.7);
+}
+
+.needs_attention {
+	background-color: rgba(255, 57, 48, 0.7);
+}
+
+a.map-iw-title {
+	background-color: rgb(9, 93, 207);
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	display: block;
+	text-decoration: none;
+}
+
+a.map-iw-title .title {
+	color: rgba(255,255,255, 1);
+}
+
+
+.info-window table {
+	border-collapse: collapse;
+}
+
+.info-window td, .info-window th {
+	border: 1px solid #999;
+	padding: 0.5rem;
+	text-align: left;
+}
+
+#filters-window {
+	display: none;
+	padding-top:10px;
+	overflow : scroll;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.filter-list-container .heading {
+	font-size:1.5em;
+	display:block;
+	margin:15px 0 10px 0;
+}
+
+.filters ul {
+	list-style : none;
+	padding-left: 0;
+	margin:0;
+}
+

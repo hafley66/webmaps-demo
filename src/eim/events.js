@@ -12,6 +12,9 @@ var eim = {
 	},
 	get markerPopupOpened() {
 		return this.e('onMarkerPopupOpened');
+	},
+	get filterChanged() {
+		return this.e('onFilterChanged');
 	}
 };
 

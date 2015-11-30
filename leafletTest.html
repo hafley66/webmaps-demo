@@ -2,23 +2,32 @@
 <html>
   <body>
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script>System.import('dte.mapper')</script>
     <style>#map { height: 500px; padding-top:100px;}</style>
     <div id="map"></div>
     <div id="dte-example" class="here">
       <eim-map zoom="10" center="{lat: 42.280826, lng: -83.743038}">
-        <eim-states>
-          <eim-state key="green" val="green" icon-url="http://maps.gstatic.com/mapfiles/markers2/icon_green.png"></eim-state>
-          <eim-state key="open_tasks" val="Open Tasks" icon-url="https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png"></eim-state>
-          <eim-state key="needs_attention" val="Needs Attention" icon-url="http://maps.gstatic.com/mapfiles/markers2/marker.png"></eim-state>
-        </eim-states>
+        <eim-icons>
+          <eim-icon key="green" url="http://maps.gstatic.com/mapfiles/markers2/icon_green.png"></eim-icon>
+          <eim-icon key="yellow" url="https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png"></eim-icon>
+          <eim-icon key="red" url="http://maps.gstatic.com/mapfiles/markers2/marker.png"></eim-icon>
+        </eim-icons>
+        <eim-state-group name="healths" keys="winterization_health, summarization_health, annual_audit_health, routine_inspection_health">
+          <eim-state value="good" to-string="Good" icon="green"></eim-state>
+          <eim-state value="open_tasks" to-string="Open Tasks" icon="yellow"></eim-state>
+          <eim-state value="needs_attention" to-string="Needs Attention" icon="red"></eim-state>
+        </eim-state-group>
+        <eim-filter name="areas" values="napoc, llileip, south, west,norht, east" keys="area"></eim-filter>
         <eim-popup>
           <dte-popup></dte-popup>
         </eim-popup>
+        <eim-control>
+          <button eim-filter-click="eim-filter-click"></button>
+        </eim-control>
       </eim-map>
       <div ng-controller="DTE.ExternalDataController" class="here"></div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="bundle.js">
-    </script>
   </body>
 </html>
